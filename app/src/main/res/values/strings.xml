@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ChatApp</string>
+    <string name="your_email">Your email</string>
+    <string name="messenger">Messenger</string>
+    <string name="your_password">Your password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="registration">Registration</string>
+    <string name="your_name">Your name</string>
+    <string name="your_lastname">Your last name</string>
+    <string name="how_old_are_you">How old are you?</string>
+    <string name="sign_up">sign up</string>
+    <string name="password_recovery">Forgot password?</string>
+    <string name="reset_password">Reset password</string>
+    <string name="register">Register</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="logout">Logout</string>
+    <string name="reset_link_sent">The reset link has been successfully sent</string>
+    <string name="type_your_message">Type your message:</string>
+</resources>
