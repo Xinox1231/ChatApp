@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:listitem="@layout/user_item"
-    tools:context=".UsersActivity"
+    tools:context=".presentation.UsersActivity"
     android:background="#B6BCCA"
     android:padding="8dp">
 

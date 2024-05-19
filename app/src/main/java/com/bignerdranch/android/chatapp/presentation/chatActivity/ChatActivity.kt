@@ -1,4 +1,4 @@
-package com.bignerdranch.android.chatapp
+package com.bignerdranch.android.chatapp.presentation.chatActivity
 
 import android.content.Context
 import android.content.Intent
@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.bignerdranch.android.chatapp.Message
+import com.bignerdranch.android.chatapp.R
 
 class ChatActivity : AppCompatActivity() {
 
@@ -55,7 +57,11 @@ class ChatActivity : AppCompatActivity() {
         chatViewModelFactory = ChatViewModelFactory(currentUserId, otherUserId)
         viewModel = ViewModelProvider(this, chatViewModelFactory)[ChatViewModel::class.java]
 
-        messagesAdapter = MessagesAdapter(currentUserId)
+        val factory = ChatMessageItemWidgetImpl.Factory()
+
+        // Создание экземпляра адаптера
+        messagesAdapter = MessagesAdapter(factory)
+
         recyclerViewMessages.adapter = messagesAdapter
 
         observeViewModel()

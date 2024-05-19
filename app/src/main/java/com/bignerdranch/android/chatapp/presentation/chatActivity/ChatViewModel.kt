@@ -1,7 +1,9 @@
-package com.bignerdranch.android.chatapp
+package com.bignerdranch.android.chatapp.presentation.chatActivity
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bignerdranch.android.chatapp.Message
+import com.bignerdranch.android.chatapp.User
 import com.google.firebase.Firebase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

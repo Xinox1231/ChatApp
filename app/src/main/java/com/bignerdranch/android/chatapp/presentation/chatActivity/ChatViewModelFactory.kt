@@ -1,4 +1,4 @@
-package com.bignerdranch.android.chatapp
+package com.bignerdranch.android.chatapp.presentation.chatActivity
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
