@@ -57,10 +57,14 @@ class ChatActivity : AppCompatActivity() {
         chatViewModelFactory = ChatViewModelFactory(currentUserId, otherUserId)
         viewModel = ViewModelProvider(this, chatViewModelFactory)[ChatViewModel::class.java]
 
-        val factory = ChatMessageItemWidgetImpl.Factory()
-
+        val myChatMessageItemWidgetImpl = MyChatMessageItemWidgetImpl.Factory(this)
+        val otherChatMessageItemWidgetImpl = OtherChatMessageItemWidgetImpl.Factory(this)
         // Создание экземпляра адаптера
-        messagesAdapter = MessagesAdapter(factory)
+        messagesAdapter = MessagesAdapter(
+            currentUserId,
+            myChatMessageItemWidgetImpl,
+            otherChatMessageItemWidgetImpl
+        )
 
         recyclerViewMessages.adapter = messagesAdapter
 
@@ -99,7 +103,7 @@ class ChatActivity : AppCompatActivity() {
 
     private fun observeViewModel() {
         viewModel.messages.observe(this) {
-            messagesAdapter.messages = it
+            messagesAdapter.items = it
         }
         viewModel.error.observe(this) {
             if (it != null) Toast.makeText(this, it, Toast.LENGTH_SHORT).show()

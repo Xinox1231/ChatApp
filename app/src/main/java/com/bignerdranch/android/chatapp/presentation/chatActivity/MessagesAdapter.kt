@@ -1,30 +1,53 @@
 package com.bignerdranch.android.chatapp.presentation.chatActivity
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.chatapp.Message
 
 class MessagesAdapter(
-    private val factory: ChatMessageItemWidget.Factory
+    private val currentUserId: String,
+    private val currentUserMessageItemFactory: ChatMessageItemWidget.Factory,
+    private val otherUserMessageItemFactory: ChatMessageItemWidget.Factory,
 ) :
-    RecyclerView.Adapter<MessagesAdapter.ChatViewHolder>() {
+    RecyclerView.Adapter<MessageViewHolder>() {
+    companion object {
+        const val MY_MESSAGE_VIEW_TYPE = 0
+        const val OTHER_MESSAGE_VIEW_TYPE = 10
+    }
 
-    var messages : List<Message> = mutableListOf<Message>()
-    inner class ChatViewHolder(private val chatMessageWidget: ChatMessageItemWidget) :
-        RecyclerView.ViewHolder((chatMessageWidget as ChatMessageItemWidgetImpl).view) {
-        fun bind(message: Message) {
-            chatMessageWidget.bind(message)
+    var items: List<Message> = listOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
         }
+
+    var counter = 0
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
+        val widget = if (viewType == MY_MESSAGE_VIEW_TYPE) {
+            currentUserMessageItemFactory.create(parent)
+        } else {
+            otherUserMessageItemFactory.create(parent)
+        }
+        counter++
+        Log.d("MessagesAdapter", counter.toString())
+        return MessageViewHolder(widget)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
-        val chatMessageWidget = factory.create(parent.context)
-        return ChatViewHolder(chatMessageWidget)
+    override fun getItemViewType(position: Int): Int {
+        return if (items[position].senderId == currentUserId) MY_MESSAGE_VIEW_TYPE
+        else OTHER_MESSAGE_VIEW_TYPE
     }
 
-    override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        holder.bind(messages[position])
+    override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
+        holder.widget.bind(items[position])
+
     }
 
-    override fun getItemCount(): Int = messages.size
+    override fun getItemCount(): Int {
+        return items.size
+    }
 }
+
+class MessageViewHolder(val widget: ChatMessageItemWidget) : RecyclerView.ViewHolder(widget.rootView)
