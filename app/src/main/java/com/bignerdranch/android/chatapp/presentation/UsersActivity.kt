@@ -1,4 +1,4 @@
-package com.bignerdranch.android.chatapp
+package com.bignerdranch.android.chatapp.presentation
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.bignerdranch.android.chatapp.R
+import com.bignerdranch.android.chatapp.User
+import com.bignerdranch.android.chatapp.presentation.chatActivity.ChatActivity
 
 class UsersActivity : AppCompatActivity() {
 

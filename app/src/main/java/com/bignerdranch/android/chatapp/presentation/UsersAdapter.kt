@@ -1,4 +1,4 @@
-package com.bignerdranch.android.chatapp
+package com.bignerdranch.android.chatapp.presentation
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bignerdranch.android.chatapp.R
+import com.bignerdranch.android.chatapp.User
 
 class UsersAdapter() : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
@@ -51,7 +53,7 @@ class UsersAdapter() : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
     }
 
     class UserViewHolder(item: View) : ViewHolder(item) {
-        var textViewUserInfo: TextView = item.findViewById(R.id.textViewUserInfo)
+        var textViewUserInfo: TextView = item.findViewById(R.id.tvUserInfo)
         val onlineStatus: View = item.findViewById(R.id.onlineStatus)
     }
     interface OnUserClickListener{

@@ -1,4 +1,4 @@
-package com.bignerdranch.android.chatapp
+package com.bignerdranch.android.chatapp.presentation
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.bignerdranch.android.chatapp.R
 
 class ResetPasswordActivity : AppCompatActivity() {
 
